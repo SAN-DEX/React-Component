@@ -1,13 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-body{
+body {
   background-color: #ffdeca;
 }
 
-h1{
+h1 {
   text-align: center;
   margin: 20px;
   color: #2c1203;
@@ -49,6 +49,9 @@ h1{
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 20px auto;
   max-width: 300px;
   background: coral;
@@ -65,4 +68,14 @@ h1{
   padding: 10px 0;
   text-align: center;
   color: white;
+}
+
+.cardContent {
+  height: 300px;
+}
+
+.bioWrap {
+  color: whitesmoke;
+  margin: 15px;
+  text-align: justify;
 }
