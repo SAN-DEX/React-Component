@@ -1,17 +1,30 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-// import reportWebVitals from './reportWebVitals';
+import useLocalStorage from "./hooks/useLocalStorage";
+import ProfileForm from "./components/ProfileForm";
+import ProfileCard from "./components/ProfileCard";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+function App() {
+  const [profiles, setProfiles] = useLocalStorage("profiles", []);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();
+  const updateProfiles = (profile) => {
+    let arr = profiles;
+    arr.push(profile);
+    setProfiles([...arr]);
+  };
+
+  return (
+    <div className="app">
+      <h1> Profile Maker </h1>
+      <div>
+        <ProfileForm submit={updateProfiles} />
+        <hr />
+        <div className="list">
+          {profiles.map((person, index) => (
+            <ProfileCard key={index} writer={person} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
